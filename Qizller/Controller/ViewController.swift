@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // Create a QuestionBank object
+    let allQuestions = QuestionBank()
 
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressLabbel: UILabel!
@@ -17,12 +20,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Display question
+        displayRandomQuestion()
+    
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         print(sender.tag)
+        // Display question
+        displayRandomQuestion()
     }
     
+    
+    func displayRandomQuestion() {
+        // Create random index
+        var randomIndex = Int.random(in: 0...12)
+        // Set the randomly selected question text to the label
+        questionLabel.text = allQuestions.list[randomIndex].questionText
+    }
 }
 

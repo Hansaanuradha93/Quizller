@@ -9,5 +9,14 @@
 import Foundation
 
 class Question {
-    let 
+    // Properties
+    let questionText : String
+    let answer : Bool
+    
+    // Initializer or Constructor
+    init(text : String, correctAnswer : Bool) {
+        questionText = text
+        answer = correctAnswer
+    }
+    
 }
