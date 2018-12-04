@@ -95,14 +95,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="progressLabbel" destination="CSW-zm-s5x" id="nGk-nO-FEH"/>
+                        <outlet property="progressLabel" destination="CSW-zm-s5x" id="vPS-tK-P0T"/>
                         <outlet property="questionLabel" destination="YQR-uj-NoG" id="C2Q-gY-wdt"/>
                         <outlet property="scoreLabel" destination="dIJ-n9-Nxf" id="Npw-hO-9mR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="220.28985507246378" y="86.383928571428569"/>
+            <point key="canvasLocation" x="83" y="62"/>
         </scene>
     </scenes>
 </document>
