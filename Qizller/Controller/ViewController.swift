@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var numberOfQuestionsCorrect: Int = 0
     var numberOfAllQuestionAnswered: Int = 0
     var scoreLavel: Int = 0
+    var progress : Float = 0
 
     
     // Create a QuestionBank object
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
-    
+    @IBOutlet weak var progressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +49,12 @@ class ViewController: UIViewController {
         // Check answer
         let selectedAnswer = checkAnswer()
         
+        // Update score when answered
+        updateUI(answer: selectedAnswer)
+        
         // Start over the app by displaying a new question
         nextQuestion()
         
-        // Update score when answered
-        updateUI(answer: selectedAnswer)
     }
     
     func restart()  {
@@ -66,7 +68,12 @@ class ViewController: UIViewController {
         // Set score label
         scoreLabel.text = "Score: \(scoreLavel)"
         
-        print("Game Over!")
+        // Set progress bar to 0
+        progress = 0
+        progressView.setProgress(progress, animated: true)
+
+        
+        print("Game Restarted!")
     }
 
     
@@ -86,8 +93,14 @@ class ViewController: UIViewController {
         // Get the correct answer
         let correctAnswer = allQuestions.list[randomIndex].answer
         
+        // Increase the value of numberOfAllQuestionAnswered by 1
+        numberOfAllQuestionAnswered += 1
+        
         if pickedAnswer == correctAnswer{
             print("You got it!!")
+            // Increase score and progress when answer is correct
+            numberOfQuestionsCorrect += 1
+            scoreLavel += 20
             return true
         }
         else if pickedAnswer != correctAnswer{
@@ -95,24 +108,22 @@ class ViewController: UIViewController {
             return false
         }
         
+        
+        
         return false
     }
     
     func updateUI(answer : Bool? = nil) {
         
-        if answer != nil {
-            if answer == true{
-                // Increase score and progress when answer is correct
-                numberOfQuestionsCorrect += 1
-                scoreLavel += 20
-            }
+        if answer != nil {           
             
-            // Increase the value of numberOfAllQuestionAnswered by 1
-            numberOfAllQuestionAnswered += 1
-            
+            progress += 1 / 13
             // If user has faced 15 questions, give them the chance to end the game or restart it
-            if numberOfAllQuestionAnswered > 14{
+            if numberOfAllQuestionAnswered > 12{
                 
+                // Game Over!
+                print("Game Over!")
+
                 // Display alert message to the user
                 let alert = UIAlertController(title: "Awesome", message: "You have faced 15 questions already, do you want to start over?", preferredStyle: .alert)
                 
@@ -129,19 +140,18 @@ class ViewController: UIViewController {
                 
             }
             
-            
-            // Set progress label
-            progressLabel.text = "\(numberOfQuestionsCorrect) / \(numberOfAllQuestionAnswered)"
-            // Set score label
-            scoreLabel.text = "Score: \(scoreLavel)"
-            
-            
         } else {
-            // Set progress label
-            progressLabel.text = "\(numberOfQuestionsCorrect) / \(numberOfAllQuestionAnswered)"
-            // Set score label
-            scoreLabel.text = "Score: \(scoreLavel)"
+            progress += 0
+
         }
+        
+        // Set progress label
+        progressLabel.text = "\(numberOfQuestionsCorrect) / \(numberOfAllQuestionAnswered)"
+        // Set score label
+        scoreLabel.text = "Score: \(scoreLavel)"
+        
+        // Set progress view
+        progressView.setProgress(progress, animated: true)
         
         
     }
