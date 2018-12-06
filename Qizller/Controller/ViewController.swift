@@ -98,6 +98,8 @@ class ViewController: UIViewController {
         
         if pickedAnswer == correctAnswer{
             print("You got it!!")
+            //Show user that the Answer is Correct
+            ProgressHUD.showSuccess("Correct")
             // Increase score and progress when answer is correct
             numberOfQuestionsCorrect += 1
             scoreLavel += 20
@@ -105,6 +107,8 @@ class ViewController: UIViewController {
         }
         else if pickedAnswer != correctAnswer{
             print("Wrong")
+            // Show user that the Answer is Wrong
+            ProgressHUD.showError("Wrong!")
             return false
         }
         

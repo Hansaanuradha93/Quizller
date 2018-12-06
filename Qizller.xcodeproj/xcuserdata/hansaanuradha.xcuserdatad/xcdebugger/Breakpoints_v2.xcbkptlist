@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Qizller/Controller/ViewController.swift"
-            timestampString = "565675698.567126"
+            timestampString = "565806234.956826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Qizller/Controller/ViewController.swift"
-            timestampString = "565675698.5672801"
+            timestampString = "565806234.957296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "checkAnswer()"
             landmarkType = "7">
          </BreakpointContent>
